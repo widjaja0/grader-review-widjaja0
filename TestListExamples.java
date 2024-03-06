@@ -15,8 +15,8 @@ public class TestListExamples {
     StringChecker myStringChecker = new IsMoon();
     List<String> myList = Arrays.asList("a", "a", "b", "c", "d");
     List<String> emptyList = Arrays.asList();
-    List<String> filtered = ListExamples.filter(emptyList, myStringChecker);
-    assertEquals(filtered, myList);
+    List<String> filtered = ListExamples.filter(myList, myStringChecker);
+    assertEquals(emptyList, filtered);
   }
 
   @Test(timeout = 500)
