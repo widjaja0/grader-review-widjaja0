@@ -1,8 +1,23 @@
 # ---------------------- SETUP ----------------------
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    MSYS_NT*)   machine=Git;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
 # VARIABLES
 # the relative path of JUNIT files
-CPATH='.;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar'
+if [[ ${machine} == "MinGw" ]]
+then
+	CPATH='.;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar'
+else
+	CPATH='.:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar'
+fi
 # borders
 BORDER='----------------------'
 
